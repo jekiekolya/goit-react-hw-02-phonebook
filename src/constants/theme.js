@@ -1,6 +1,6 @@
 export const theme = Object.freeze({
   colors: {
-    border: '#c1c1c1',
+    border: '#959595',
     mainBg: '#ffffff',
     text: '#000000',
     accent: 'lightblue',
