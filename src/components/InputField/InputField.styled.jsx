@@ -3,20 +3,20 @@ import styled from '@emotion/styled';
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
-  gap: ${p => p.theme.space[3]}px;
+  gap: ${p => p.theme.space[2]}px;
 
-  margin-bottom: ${p => p.theme.space[5]}px;
+  margin-bottom: ${p => p.theme.space[4]}px;
 `;
 
 export const Input = styled.input`
-  width: ${p => p.theme.space[8]}px;
+  width: ${p => p.theme.space[7]}px;
 
-  padding: ${p => p.theme.space[3]}px;
+  padding: ${p => p.theme.space[2]}px;
 
-  font-size: ${p => p.theme.fontsSizes.m}px;
+  font-size: ${p => p.theme.fontsSizes.s}px;
 
   border: 1px solid ${p => p.theme.colors.border};
-  border-radius: ${p => p.theme.space[2]}px;
+  border-radius: ${p => p.theme.space[1]}px;
 
   &:focus-within {
     border: 1px solid ${p => p.theme.colors.accent};
@@ -26,5 +26,5 @@ export const Input = styled.input`
 `;
 
 export const NameLabel = styled.span`
-  font-size: ${p => p.theme.fontsSizes.l}px;
+  font-size: ${p => p.theme.fontsSizes.m}px;
 `;

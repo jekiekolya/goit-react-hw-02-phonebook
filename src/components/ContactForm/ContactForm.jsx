@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import InputField from '../InputField';
 
-import { Form, ButtonAddContact } from './FormAddContact.styled';
+import { Form, ButtonAddContact } from './ContactForm.styled';
 
-export class FormAddContact extends Component {
+class FormAddContact extends Component {
   handleClickAddContact = e => {
     e.target.classList.add('click');
     setTimeout(() => {
@@ -49,3 +49,5 @@ export class FormAddContact extends Component {
 FormAddContact.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
+
+export default FormAddContact;
