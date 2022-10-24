@@ -13,7 +13,7 @@ export const ButtonStyled = styled.button`
   border: 1px solid ${p => p.theme.colors.border};
   border-radius: ${p => p.theme.space[1]}px;
 
-  &&.click {
+  &&:active {
     background-color: ${p => p.theme.colors.accent};
   }
 `;

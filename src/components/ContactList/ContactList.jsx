@@ -5,7 +5,7 @@ import Button from '../Button';
 
 import { Box } from '../Box';
 
-const ContactList = ({ contacts, filterValue, handleDeleteItem }) => {
+const ContactList = ({ contacts, filterValue, onDeleteContact }) => {
   return (
     <Box>
       <ContactsList>
@@ -22,7 +22,7 @@ const ContactList = ({ contacts, filterValue, handleDeleteItem }) => {
                 <Button
                   type="submit"
                   name="Delete"
-                  onClick={handleDeleteItem}
+                  onClick={() => onDeleteContact(contact.id)}
                 />
               </ContactItem>
             );
@@ -41,7 +41,7 @@ ContactList.propTypes = {
     })
   ).isRequired,
   filterValue: PropTypes.string.isRequired,
-  handleDeleteItem: PropTypes.func.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactList;

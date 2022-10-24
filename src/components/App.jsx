@@ -29,20 +29,18 @@ export class App extends Component {
     Notify.success(`${name} successfully added`);
   };
 
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   handlerFilterList = e => {
     const inputValue = e.target.value.toLocaleLowerCase();
 
     this.setState(() => {
       return { filter: inputValue };
     });
-  };
-
-  handleDeleteItem = e => {
-    e.target.classList.add('click');
-    setTimeout(() => {
-      e.target.classList.remove('click');
-    }, 100);
-    console.log(e.target.closest('li'));
   };
 
   render() {
@@ -58,7 +56,7 @@ export class App extends Component {
         <ContactList
           contacts={this.state.contacts}
           filterValue={this.state.filter}
-          handleDeleteItem={this.handleDeleteItem}
+          onDeleteContact={this.deleteContact}
         />
       </Box>
     );
