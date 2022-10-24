@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { nanoid } from 'nanoid';
 import { Box } from './Box';
 import { MainTitle, SecondaryTitle } from './App.styled';
 
@@ -17,29 +17,16 @@ export class App extends Component {
     filter: '',
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const name = form.elements.name.value;
-    const number = form.elements.number.value;
-
-    // Check input value and create notification
-    const statusValidation = checkEqualValue.call(this.state.contacts, name);
-    if (statusValidation === 'alert') return;
-
-    // Add new contact
-    const contact = { id: nanoid(), name: name, number: number };
+  addContact = contact => {
+    const { name, number } = contact;
     const newContacts = [...this.state.contacts];
-    newContacts.unshift(contact);
+    newContacts.unshift({ id: nanoid(), name: name, number: number });
 
     this.setState(() => {
       return { contacts: newContacts };
     });
 
     Notify.success(`${name} successfully added`);
-
-    // reset values in form
-    form.reset();
   };
 
   handlerFilterList = e => {
@@ -50,31 +37,30 @@ export class App extends Component {
     });
   };
 
+  handleDeleteItem = e => {
+    e.target.classList.add('click');
+    setTimeout(() => {
+      e.target.classList.remove('click');
+    }, 100);
+    console.log(e.target.closest('li'));
+  };
+
   render() {
     return (
       <Box bg="mainBg" color="text" padding="30px">
         <MainTitle>Phonebook</MainTitle>
-        <ContactForm handleSubmit={this.handleSubmit} />
+        <ContactForm
+          onSubmit={this.addContact}
+          contacts={this.state.contacts}
+        />
         <SecondaryTitle>Contacts</SecondaryTitle>
         <Filter handlerFilterList={this.handlerFilterList} />
         <ContactList
           contacts={this.state.contacts}
           filterValue={this.state.filter}
+          handleDeleteItem={this.handleDeleteItem}
         />
       </Box>
     );
   }
-}
-
-function checkEqualValue(name) {
-  const equalValue = this.filter(item => {
-    return item.name === name;
-  });
-
-  if (equalValue.toString()) {
-    Notify.failure(`${name} is already in contact`);
-    return 'alert';
-  }
-
-  return 'ok';
 }

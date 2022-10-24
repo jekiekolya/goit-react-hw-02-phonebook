@@ -1,9 +1,11 @@
 import { ContactsList, ContactItem } from './ContactList.styled';
 import PropTypes from 'prop-types';
 
+import Button from '../Button';
+
 import { Box } from '../Box';
 
-export const ContactList = ({ contacts, filterValue }) => {
+const ContactList = ({ contacts, filterValue, handleDeleteItem }) => {
   return (
     <Box>
       <ContactsList>
@@ -14,7 +16,14 @@ export const ContactList = ({ contacts, filterValue }) => {
           .map(contact => {
             return (
               <ContactItem key={contact.id}>
-                {contact.name}: {contact.number}
+                <p>
+                  {contact.name}: {contact.number}
+                </p>
+                <Button
+                  type="submit"
+                  name="Delete"
+                  onClick={handleDeleteItem}
+                />
               </ContactItem>
             );
           })}
@@ -32,6 +41,7 @@ ContactList.propTypes = {
     })
   ).isRequired,
   filterValue: PropTypes.string.isRequired,
+  handleDeleteItem: PropTypes.func.isRequired,
 };
 
 export default ContactList;
