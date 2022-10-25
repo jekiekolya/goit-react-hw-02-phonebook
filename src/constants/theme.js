@@ -4,6 +4,7 @@ export const theme = Object.freeze({
     mainBg: '#ffffff',
     text: '#000000',
     accent: 'lightblue',
+    accentSecondary: '#00aeff',
   },
 
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],

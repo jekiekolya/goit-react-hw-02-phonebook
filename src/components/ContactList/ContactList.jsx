@@ -1,5 +1,10 @@
-import { ContactsList, ContactItem } from './ContactList.styled';
 import PropTypes from 'prop-types';
+import {
+  ContactsList,
+  ContactItem,
+  Icon,
+  NameContact,
+} from './ContactList.styled';
 
 import Button from '../Button';
 
@@ -16,9 +21,10 @@ const ContactList = ({ contacts, filterValue, onDeleteContact }) => {
           .map(contact => {
             return (
               <ContactItem key={contact.id}>
-                <p>
+                <Icon />
+                <NameContact>
                   {contact.name}: {contact.number}
-                </p>
+                </NameContact>
                 <Button
                   type="button"
                   name="Delete"

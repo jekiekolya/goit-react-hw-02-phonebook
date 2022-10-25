@@ -11,9 +11,9 @@ export const ButtonStyled = styled.button`
   font-size: ${p => p.theme.fontsSizes.s}px;
 
   border: 1px solid ${p => p.theme.colors.border};
-  border-radius: ${p => p.theme.space[1]}px;
+  border-radius: ${p => p.theme.space[2]}px;
 
   &&:active {
-    background-color: ${p => p.theme.colors.accent};
+    background-color: ${p => p.theme.colors.accentSecondary};
   }
 `;
