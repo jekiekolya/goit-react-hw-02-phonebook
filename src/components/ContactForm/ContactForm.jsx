@@ -60,11 +60,7 @@ class FormAddContact extends Component {
           onChange={this.handleChangeNumber}
         />
 
-        <Button
-          type="submit"
-          name="Add contact"
-          onClick={this.handleClickAddContact}
-        />
+        <Button name="Add contact" />
       </Form>
     );
   }

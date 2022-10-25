@@ -9,9 +9,14 @@ const Button = ({ type, name, ...otherProps }) => {
   );
 };
 
+Button.defaultProps = {
+  type: 'submit',
+};
+
 Button.propTypes = {
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default Button;

@@ -20,7 +20,7 @@ const ContactList = ({ contacts, filterValue, onDeleteContact }) => {
                   {contact.name}: {contact.number}
                 </p>
                 <Button
-                  type="submit"
+                  type="button"
                   name="Delete"
                   onClick={() => onDeleteContact(contact.id)}
                 />
