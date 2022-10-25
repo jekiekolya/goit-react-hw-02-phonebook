@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import { Label, Input, NameLabel } from './InputField.styled';
 
-export default function InputField({ nameLabel, ...otherProps }) {
+export default function InputField({ nameLabel, ...inputSetting }) {
   return (
     <Label>
       {nameLabel && <NameLabel>{nameLabel}</NameLabel>}
-      <Input {...otherProps} />
+      <Input {...inputSetting} />
     </Label>
   );
 }
