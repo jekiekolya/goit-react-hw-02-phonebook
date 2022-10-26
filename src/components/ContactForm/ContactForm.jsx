@@ -7,6 +7,11 @@ import Button from '../Button';
 
 import { Form } from './ContactForm.styled';
 
+const init = {
+  name: '',
+  number: '',
+};
+
 class FormAddContact extends Component {
   state = {
     name: '',
@@ -32,32 +37,40 @@ class FormAddContact extends Component {
     this.props.onSubmit({ name, number });
 
     // reset values in form
-    e.currentTarget.reset();
+    this.resetForm(init);
   };
 
+  resetForm(init) {
+    this.setState(init);
+  }
+
   render() {
+    const { handleSubmit, handleChangeName, handleChangeNumber } = this;
+    const { name, number } = this.state;
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <InputField
           nameLabel="Name"
           type="text"
           name="name"
+          value={name}
           placeholder="Jekie Kolya"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          onChange={this.handleChangeName}
+          onChange={handleChangeName}
         />
 
         <InputField
           nameLabel="Number"
           type="tel"
           name="number"
+          value={number}
           placeholder="777-77-77"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          onChange={this.handleChangeNumber}
+          onChange={handleChangeNumber}
         />
 
         <Button name="Add contact" />

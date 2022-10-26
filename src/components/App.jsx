@@ -44,19 +44,18 @@ export class App extends Component {
   };
 
   render() {
+    const { addContact, handlerFilterList, deleteContact } = this;
+    const { contacts, filter } = this.state;
     return (
       <Box bg="mainBg" color="text" padding="30px">
         <MainTitle>Phonebook</MainTitle>
-        <ContactForm
-          onSubmit={this.addContact}
-          contacts={this.state.contacts}
-        />
+        <ContactForm onSubmit={addContact} contacts={contacts} />
         <SecondaryTitle>Contacts</SecondaryTitle>
-        <Filter handlerFilterList={this.handlerFilterList} />
+        <Filter handlerFilterList={handlerFilterList} />
         <ContactList
-          contacts={this.state.contacts}
-          filterValue={this.state.filter}
-          onDeleteContact={this.deleteContact}
+          contacts={contacts}
+          filterValue={filter}
+          onDeleteContact={deleteContact}
         />
       </Box>
     );
