@@ -90,8 +90,6 @@ FormAddContact.propTypes = {
   ).isRequired,
 };
 
-export default FormAddContact;
-
 function checkEqualValue(name) {
   const equalValue = this.filter(item => {
     return item.name === name;
@@ -104,3 +102,5 @@ function checkEqualValue(name) {
 
   return 'ok';
 }
+
+export default FormAddContact;
